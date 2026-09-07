@@ -57,7 +57,9 @@ export function PromptPreview({
         </span>
       </div>
       <div className="mt-[23px] flex items-center gap-[9px] rounded-[5px] bg-[#f3efe8] p-3 text-[#8c837a]">
-        <span className="text-[14px] text-[#e86d49]">✦</span>
+        <span className="text-[#e86d49]">
+          <Icon name="sparkles" />
+        </span>
         <p className="m-0 text-[10px] leading-[1.5]">
           <strong className="font-semibold text-[#2c2926]">Tip</strong> Paste this into ChatGPT,
           Claude, Gemini, or any other AI assistant.

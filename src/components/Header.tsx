@@ -12,8 +12,19 @@ export function Header() {
         to="/"
         aria-label="Prompt Foundry home"
       >
-        <span className="grid h-[30px] w-[30px] rotate-[-6deg] place-items-center rounded-[9px] bg-[#e86d49] text-[17px] text-white">
-          ✦
+        <span className="grid h-[30px] w-[30px] rotate-[-6deg] place-items-center rounded-[9px] bg-[#e86d49] text-white">
+          <svg
+            className="h-[17px] w-[17px]"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <path
+              d="M12 2.5L14 10L21.5 12L14 14L12 21.5L10 14L2.5 12L10 10L12 2.5Z"
+              fill="currentColor"
+            />
+          </svg>
         </span>
         <span>
           Prompt<span className="text-[#e86d49]">Scratchpad</span>
