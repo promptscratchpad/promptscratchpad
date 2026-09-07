@@ -1,4 +1,4 @@
-import type { PromptTemplate } from "../data/prompts";
+import type { PromptCategory, PromptTemplate } from "../data/prompts";
 import { Icon } from "./Icon";
 import type { ChooseTemplate } from "./types";
 
@@ -18,9 +18,9 @@ export function PromptLibrary({
   selectedId: string;
   query: string;
   setQuery: (value: string) => void;
-  categories: string[];
-  activeCategory: string;
-  setActiveCategory: (value: string) => void;
+  categories: (PromptCategory | "All prompts")[];
+  activeCategory: PromptCategory | "All prompts";
+  setActiveCategory: (value: PromptCategory | "All prompts") => void;
   chooseTemplate: ChooseTemplate;
 }) {
   return (

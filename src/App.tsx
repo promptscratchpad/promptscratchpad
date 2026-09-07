@@ -1,5 +1,10 @@
 import { useMemo, useState } from "react";
-import { promptTemplates, type PromptField, type PromptTemplate } from "./data/prompts";
+import {
+  promptTemplates,
+  type PromptCategory,
+  type PromptField,
+  type PromptTemplate,
+} from "./data/prompts";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { PromptForm } from "./components/PromptForm";
@@ -62,10 +67,12 @@ function App() {
   const [values, setValues] = useState<FormValues>(() => initialValues(promptTemplates[0]));
   const [query, setQuery] = useState("");
   const [copied, setCopied] = useState(false);
-  const [activeCategory, setActiveCategory] = useState("All prompts");
+  const [activeCategory, setActiveCategory] = useState<PromptCategory | "All prompts">(
+    "All prompts",
+  );
   const selectedTemplate =
     promptTemplates.find((template) => template.id === selectedId) ?? promptTemplates[0];
-  const categories = [
+  const categories: (PromptCategory | "All prompts")[] = [
     "All prompts",
     ...new Set(promptTemplates.flatMap((template) => template.categories)),
   ];
