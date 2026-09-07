@@ -83,14 +83,14 @@ export const promptTemplates: PromptTemplate[] = [
       "Give your idea a point of view, an audience, and a useful shape. The result is a strong first draft to work from.",
     categories: ["Writing"],
     template:
-      "Write a {{tone}} blog post about {{topic}} for {{audience}}.\n\n[if word_count]The post should be around {{word_count}} words.[endif]",
+      "Write a {{tone.toLower}} blog post about {{topic}} for {{audience}}.\n\n[if word_count]The post should be around {{word_count}} words.[endif]",
     fields: [
       {
         label: "Topic",
         placeholder: "{{topic}}",
         type: "text",
         required: true,
-        placeholderText: "e.g. Why small teams ship faster",
+        placeholderText: "e.g. why small teams ship faster",
       },
       {
         label: "Tone",
@@ -104,7 +104,7 @@ export const promptTemplates: PromptTemplate[] = [
         placeholder: "{{audience}}",
         type: "text",
         required: true,
-        placeholderText: "e.g. Product leaders at startups",
+        placeholderText: "e.g. product leaders at startups",
       },
       {
         label: "Approximate word count",

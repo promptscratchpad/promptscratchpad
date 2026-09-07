@@ -38,6 +38,7 @@ function renderPrompt(template: string, values: FormValues) {
     const [key, modifier] = token.trim().split(".");
     const value = values[`{{${key}}}`] ?? values[`@{{${key}}}`];
     if (!hasValue(value)) return match;
+    const stringValue = Array.isArray(value) ? value.filter(Boolean).join(", ") : String(value);
     if (modifier === "toList")
       return Array.isArray(value)
         ? value
@@ -45,9 +46,9 @@ function renderPrompt(template: string, values: FormValues) {
             .map((item) => `• ${item}`)
             .join("\n")
         : `• ${value}`;
-    if (modifier === "toString")
-      return Array.isArray(value) ? value.filter(Boolean).join(", ") : String(value);
-    return Array.isArray(value) ? value.filter(Boolean).join(", ") : String(value);
+    if (modifier === "toString") return stringValue;
+    if (modifier === "toLower") return stringValue.toLowerCase();
+    return stringValue;
   });
   return output
     .replace(/\r\n?/g, "\n")
