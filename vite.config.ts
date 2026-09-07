@@ -5,6 +5,7 @@ import { cloudflare } from "@cloudflare/vite-plugin";
 
 // https://vite.dev/config/
 export default defineConfig({
+  appType: "spa",
   staged: {
     "*": "vp check --fix",
   },
@@ -32,5 +33,15 @@ export default defineConfig({
       },
     ],
   },
-  plugins: lazyPlugins(() => [cloudflare(), tailwindcss(), react()]),
+  plugins: lazyPlugins(() => [
+    cloudflare({
+      config: {
+        assets: {
+          not_found_handling: "single-page-application",
+        },
+      },
+    }),
+    tailwindcss(),
+    react(),
+  ]),
 });
