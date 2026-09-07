@@ -10,7 +10,7 @@ export function Footer() {
         target="_blank"
         rel="noreferrer"
       >
-        Suggest an improvement <Icon name="external" />
+        Suggest an improvement <Icon name="square-arrow-out-up-right" />
       </a>
     </footer>
   );

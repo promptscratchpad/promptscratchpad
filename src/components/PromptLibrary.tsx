@@ -75,7 +75,7 @@ export function PromptLibrary({
             onClick={() => chooseTemplate(template)}
           >
             <span className="grid h-[29px] w-[29px] shrink-0 place-items-center rounded-[6px] bg-[#eee9f7] font-mono text-[12px] font-medium text-[#6e5b91]">
-              {template.icon}
+              <Icon name={template.icon} />
             </span>
             <span className="flex min-w-0 flex-col gap-[3px]">
               <strong className="text-[12px] font-semibold">{template.name}</strong>

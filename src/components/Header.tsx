@@ -28,14 +28,15 @@ export function Header() {
           target="_blank"
           rel="noreferrer"
         >
-          GitHub <Icon name="external" />
+          GitHub <Icon name="square-arrow-out-up-right" />
         </a>
       </nav>
       <button
-        className="ml-auto rounded-[7px] border border-[#d9d3cc] bg-transparent px-[15px] py-2.5 text-[12px] text-[#2c2926] hover:border-[#e86d49] hover:text-[#bd4d2e] max-[720px]:px-2.5 max-[720px]:py-2 max-[720px]:text-[10px]"
+        className="flex gap-1 items-center ml-auto rounded-[7px] border border-[#d9d3cc] bg-transparent px-[15px] py-2.5 text-[12px] text-[#2c2926] hover:border-[#e86d49] hover:text-[#bd4d2e] max-[720px]:px-2.5 max-[720px]:py-2 max-[720px]:text-[10px]"
         type="button"
       >
-        Contribute a prompt <span>↗</span>
+        <p>Contribute a prompt</p>
+        <Icon name="square-arrow-out-up-right" />
       </button>
     </header>
   );

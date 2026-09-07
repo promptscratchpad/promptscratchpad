@@ -37,7 +37,7 @@ export const promptTemplates: PromptTemplate[] = [
   {
     id: "character-creator",
     name: "Character creator",
-    icon: "✹",
+    icon: "sparkles",
     description: "Build a character with depth",
     longDescription:
       "Create a memorable character with a clear voice, strong motivations, and room to surprise.",
@@ -77,7 +77,7 @@ export const promptTemplates: PromptTemplate[] = [
   {
     id: "blog-post",
     name: "Blog post generator",
-    icon: "Aa",
+    icon: "type",
     description: "Turn an idea into a draft",
     longDescription:
       "Give your idea a point of view, an audience, and a useful shape. The result is a strong first draft to work from.",
@@ -118,7 +118,7 @@ export const promptTemplates: PromptTemplate[] = [
   {
     id: "code-snippet",
     name: "Code snippet generator",
-    icon: "</>",
+    icon: "code-2",
     description: "Get a focused implementation",
     longDescription:
       "Describe the task and let the prompt ask for the code, tradeoffs, and setup details that matter.",
@@ -170,7 +170,7 @@ export const promptTemplates: PromptTemplate[] = [
   {
     id: "meeting-notes",
     name: "Meeting notes",
-    icon: "☷",
+    icon: "list-todo",
     description: "Turn a transcript into action",
     longDescription:
       "Summarise the useful parts of a meeting and make the next actions hard to miss.",

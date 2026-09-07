@@ -130,7 +130,7 @@ function App() {
               className="flex items-center gap-[7px] border-0 bg-transparent px-0 py-2.5 text-[11px] text-[#807a73] hover:text-[#bd4d2e] max-[720px]:mt-[17px]"
               onClick={() => setValues(initialValues(selectedTemplate))}
             >
-              <Icon name="rotate" /> Reset
+              <Icon name="rotate-ccw" /> Reset
             </button>
           </div>
           <div className="mx-auto grid max-w-[990px] grid-cols-[minmax(290px,.9fr)_minmax(370px,1.1fr)] items-start gap-5 max-[1050px]:grid-cols-1">
