@@ -12,7 +12,7 @@ The project is built for community-contributed prompt templates. Templates are k
 - Placeholder modifiers for strings, lowercase output, and lists.
 - Search and category filtering.
 - Raw Lucide icon names in the UI and templates.
-- Hash-based routes for the prompt library and About page.
+- Routes for the prompt library and About page.
 - Tailwind CSS styling.
 
 ## Getting started
@@ -34,18 +34,18 @@ The app will be available at `http://localhost:5173/`.
 
 The routes are:
 
-- `/#/` for the prompt library.
-- `/#/about` for project information and package licenses.
+- `/` for the prompt library.
+- `/about` for project information and package licenses.
 
 ### Optional analytics
 
-PromptScratchpad supports anonymous PostHog tracking for successful prompt copies. To enable it, copy `.env.example` to `.env.local` and add the project key from the EU PostHog data region:
+PromptScratchpad supports anonymous PostHog tracking. The app runs without analytics when these variables are not set. To enable tracking, copy `.env.example` to `.env.local` and add the project token from the EU PostHog data region:
 
 ```bash
 cp .env.example .env.local
 ```
 
-Analytics uses cookieless tracking, in-memory persistence, no person profiles, no autocapture, and no session recording. Anonymous pageviews include the initial page and hash-route changes. The only custom event is `prompt_copied`, which includes the prompt template ID and never includes the rendered prompt or form values. PostHog's cookieless server hash mode must be enabled in the PostHog project settings.
+Analytics uses cookieless tracking, in-memory persistence, no person profiles, no autocapture, and no session recording. Custom events include `prompt_template_selected`, `prompt_reset`, and `prompt_copied`. Each event includes the prompt template ID and never includes the rendered prompt or form values.
 
 ## Add a prompt template
 
@@ -130,7 +130,7 @@ src/
 ├── components/       Reusable React UI components
 ├── data/
 │   ├── prompts.ts    Template types and automatic template loading
-│   └── templates/    Community prompt templates and contributor guide
+│   └── templates/    Community prompt templates
 ├── App.tsx           Prompt library state and rendering logic
 ├── index.css         Tailwind CSS entry point
 └── main.tsx          React Router setup
@@ -145,6 +145,49 @@ vp check    # Format, lint, and type-check
 vp test     # Run tests
 vp lint     # Run the linter
 ```
+
+## Test
+
+Run the test suite with:
+
+```bash
+vp test
+```
+
+The tests cover prompt rendering, conditional sections, modifiers, whitespace cleanup, and prompt template loading.
+
+## Deploy to Cloudflare
+
+PromptScratchpad deploys as a Cloudflare Worker with static assets. You need a Cloudflare account and Wrangler authentication:
+
+```bash
+pnpm exec wrangler login
+```
+
+PostHog is optional. If you want analytics in the deployed build, provide these Vite variables before building:
+
+```bash
+VITE_POSTHOG_HOST=https://i.promptscratchpad.com \
+VITE_POSTHOG_PROJECT_TOKEN=your-project-token \
+pnpm build
+```
+
+Leave them unset to deploy without analytics. These values are read at build time, so rebuild after changing them. Do not put private secrets in `VITE_` variables because Vite includes them in the browser bundle.
+
+Build and preview the Worker locally with:
+
+```bash
+pnpm build
+pnpm preview
+```
+
+Deploy the latest build with:
+
+```bash
+pnpm exec wrangler deploy
+```
+
+The Cloudflare plugin generates the deployment configuration in `dist/`. Its SPA fallback serves `index.html` for unknown asset paths so the `/about` client-side route works after deployment.
 
 Before opening a pull request, run:
 

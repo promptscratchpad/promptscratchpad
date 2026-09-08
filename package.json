@@ -16,7 +16,8 @@
     "posthog-js": "^1.427.3",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
-    "react-router-dom": "^7.18.3"
+    "react-router-dom": "^7.18.3",
+    "vitest": "^5.0.0"
   },
   "devDependencies": {
     "@cloudflare/vite-plugin": "^1.54.3",

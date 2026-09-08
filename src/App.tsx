@@ -13,6 +13,7 @@ import { PromptLibrary } from "./components/PromptLibrary";
 import { PromptPreview } from "./components/PromptPreview";
 import type { FieldValue, FormValues } from "./components/types";
 import { Icon } from "./components/Icon";
+import { hasValue, renderPrompt } from "./data/render-prompt";
 
 function defaultValue(field: PromptField): FieldValue {
   if (field.type === "toggle") return field.defaultValue ?? false;
@@ -24,43 +25,6 @@ function initialValues(template: PromptTemplate): FormValues {
   return Object.fromEntries(
     template.fields.map((field) => [field.placeholder, defaultValue(field)]),
   );
-}
-
-function hasValue(value: FieldValue | undefined) {
-  return Array.isArray(value)
-    ? value.some(Boolean)
-    : value !== undefined && value !== "" && value !== null && value !== false;
-}
-
-function renderPrompt(template: string, values: FormValues) {
-  let output = template.replace(
-    /\[if\s+([^\]]+)\]([\s\S]*?)\[endif\]/g,
-    (_, key: string, content: string) => {
-      const value = values[`{{${key.trim()}}}`] ?? values[`@{{${key.trim()}}}`];
-      return hasValue(value) ? content : "";
-    },
-  );
-  output = output.replace(/@?\{\{([^}]+)\}\}/g, (match, token: string) => {
-    const [key, modifier] = token.trim().split(".");
-    const value = values[`{{${key}}}`] ?? values[`@{{${key}}}`];
-    if (!hasValue(value)) return match;
-    const stringValue = Array.isArray(value) ? value.filter(Boolean).join(", ") : String(value);
-    if (modifier === "toList")
-      return Array.isArray(value)
-        ? value
-            .filter(Boolean)
-            .map((item) => `• ${item}`)
-            .join("\n")
-        : `• ${value}`;
-    if (modifier === "toString") return stringValue;
-    if (modifier === "toLower") return stringValue.toLowerCase();
-    return stringValue;
-  });
-  return output
-    .replace(/\r\n?/g, "\n")
-    .replace(/[ \t]+\n/g, "\n")
-    .replace(/\n{3,}/g, "\n\n")
-    .trim();
 }
 
 function App({ isPostHogConfigured }: { isPostHogConfigured: boolean }) {
