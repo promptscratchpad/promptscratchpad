@@ -11,7 +11,9 @@
     "prepare": "vp config"
   },
   "dependencies": {
+    "@posthog/react": "^1.10.6",
     "lucide-react": "^1.41.0",
+    "posthog-js": "^1.427.3",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "react-router-dom": "^7.18.3"

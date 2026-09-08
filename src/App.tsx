@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { usePostHog } from "@posthog/react";
 import {
   promptTemplates,
   type PromptCategory,
@@ -62,7 +63,8 @@ function renderPrompt(template: string, values: FormValues) {
     .trim();
 }
 
-function App() {
+function App({ isPostHogConfigured }: { isPostHogConfigured: boolean }) {
+  const posthog = usePostHog();
   const [selectedId, setSelectedId] = useState(promptTemplates[0].id);
   const [values, setValues] = useState<FormValues>(() => initialValues(promptTemplates[0]));
   const [query, setQuery] = useState("");
@@ -90,14 +92,26 @@ function App() {
     (field) => field.required && !hasValue(values[field.placeholder]),
   );
   const chooseTemplate = (template: PromptTemplate) => {
+    if (isPostHogConfigured) {
+      posthog.capture("prompt_template_selected", { prompt_template_id: template.id });
+    }
     setSelectedId(template.id);
     setValues(initialValues(template));
     setCopied(false);
+  };
+  const resetPrompt = () => {
+    if (isPostHogConfigured) {
+      posthog.capture("prompt_reset", { prompt_template_id: selectedId });
+    }
+    setValues(initialValues(selectedTemplate));
   };
   const updateField = (field: PromptField, value: FieldValue) =>
     setValues((current) => ({ ...current, [field.placeholder]: value }));
   const copyPrompt = async () => {
     await navigator.clipboard.writeText(generatedPrompt);
+    if (isPostHogConfigured) {
+      posthog.capture("prompt_copied", { prompt_template_id: selectedId });
+    }
     setCopied(true);
     window.setTimeout(() => setCopied(false), 1800);
   };
@@ -136,7 +150,7 @@ function App() {
             <button
               type="button"
               className="flex items-center gap-[7px] border-0 bg-transparent px-0 py-2.5 text-[11px] text-[#807a73] hover:text-[#bd4d2e] max-[720px]:mt-[17px]"
-              onClick={() => setValues(initialValues(selectedTemplate))}
+              onClick={resetPrompt}
             >
               <Icon name="rotate-ccw" /> Reset
             </button>
