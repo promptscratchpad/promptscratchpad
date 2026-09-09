@@ -40,7 +40,11 @@ export function PromptPreview({
       </div>
       {missingRequired.length > 0 && (
         <p className="mb-3 text-[10px] leading-[1.45] text-[#bd4d2e]">
-          Add {missingRequired.join(" and ")} to complete this prompt.
+          Add{" "}
+          {missingRequired.length > 1
+            ? `${missingRequired.slice(0, -1).join(", ")} and ${missingRequired.at(-1)}`
+            : missingRequired[0]}{" "}
+          to complete this prompt.
         </p>
       )}
       <div className="flex items-center justify-between">
