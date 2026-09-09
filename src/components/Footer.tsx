@@ -6,7 +6,7 @@ export function Footer() {
       <span>Made for the prompters.</span>
       <a
         className="flex items-center gap-1.5 text-[#bd4d2e]"
-        href="https://github.com/promptscratchpad/templates"
+        href="https://github.com/promptscratchpad/promptscratchpad"
         target="_blank"
         rel="noreferrer"
       >
