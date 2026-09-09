@@ -49,7 +49,17 @@ function App({ isPostHogConfigured }: { isPostHogConfigured: boolean }) {
     promptTemplates.find((template) => template.id === selectedId) ?? promptTemplates[0];
   const categories: (PromptCategory | "All prompts")[] = [
     "All prompts",
-    ...new Set(promptTemplates.flatMap((template) => template.categories)),
+    ...[...new Set(promptTemplates.flatMap((template) => template.categories))].sort(
+      (firstCategory, secondCategory) => {
+        const firstCount = promptTemplates.filter((template) =>
+          template.categories.includes(firstCategory),
+        ).length;
+        const secondCount = promptTemplates.filter((template) =>
+          template.categories.includes(secondCategory),
+        ).length;
+        return secondCount - firstCount || firstCategory.localeCompare(secondCategory);
+      },
+    ),
   ];
   const filteredTemplates = useMemo(
     () =>
