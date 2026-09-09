@@ -24,7 +24,7 @@ export function PromptLibrary({
   chooseTemplate: ChooseTemplate;
 }) {
   return (
-    <aside className="border-r border-[#dfdbd4] bg-[#f8f6f2] px-6 pb-9 pl-[42px] pt-[52px] max-[1050px]:pl-6 max-[720px]:border-b max-[720px]:border-r-0 max-[720px]:px-[18px] max-[720px]:py-[31px]">
+    <aside className="flex max-h-[calc(100vh-76px)] min-h-0 flex-col border-r border-[#dfdbd4] bg-[#f8f6f2] px-6 pb-9 pl-[42px] pt-[52px] max-[1050px]:pl-6 max-[720px]:max-h-none max-[720px]:border-b max-[720px]:border-r-0 max-[720px]:px-[18px] max-[720px]:py-[31px]">
       <div>
         <p className="mb-2.5 font-mono text-[10px] font-medium uppercase tracking-[1.6px] text-[#bd4d2e]">
           Prompt library
@@ -66,34 +66,36 @@ export function PromptLibrary({
           </button>
         ))}
       </div>
-      <div className="grid gap-[5px] max-[720px]:flex max-[720px]:overflow-x-auto max-[720px]:pb-1">
-        {templates.map((template) => (
-          <button
-            type="button"
-            className={`relative flex w-full items-start gap-[11px] rounded-[7px] border p-[11px_10px] text-left ${selectedId === template.id ? "border-[#e7b4a4] bg-[#fffaf6]" : "border-transparent bg-transparent hover:bg-[#f1ede7]"} max-[720px]:min-w-[220px]`}
-            key={template.id}
-            onClick={() => chooseTemplate(template)}
-          >
-            <span className="grid h-[29px] w-[29px] shrink-0 place-items-center rounded-[6px] bg-[#eee9f7] font-mono text-[12px] font-medium text-[#6e5b91]">
-              <Icon name={template.icon} />
-            </span>
-            <span className="flex min-w-0 flex-col gap-[3px]">
-              <strong className="text-[12px] font-semibold">{template.name}</strong>
-              <small className="text-[10px] leading-[1.35] text-[#807a73]">
-                {template.description}
-              </small>
-              <span className="font-mono text-[9px] text-[#aaa39b]">
-                {template.fields.length} fields <i>·</i> {template.categories[0]}
+      <div className="min-h-0 flex-1 overflow-y-auto pr-1 max-[720px]:flex-none max-[720px]:overflow-x-auto max-[720px]:overflow-y-hidden max-[720px]:pb-1">
+        <div className="grid gap-[5px]">
+          {templates.map((template) => (
+            <button
+              type="button"
+              className={`relative flex w-full items-start gap-[11px] rounded-[7px] border p-[11px_10px] text-left ${selectedId === template.id ? "border-[#e7b4a4] bg-[#fffaf6]" : "border-transparent bg-transparent hover:bg-[#f1ede7]"} max-[720px]:min-w-[220px]`}
+              key={template.id}
+              onClick={() => chooseTemplate(template)}
+            >
+              <span className="grid h-[29px] w-[29px] shrink-0 place-items-center rounded-[6px] bg-[#eee9f7] font-mono text-[12px] font-medium text-[#6e5b91]">
+                <Icon name={template.icon} />
               </span>
-            </span>
-            {selectedId === template.id && (
-              <span className="absolute right-[11px] top-[15px] h-1.5 w-1.5 rounded-full bg-[#e86d49]" />
-            )}
-          </button>
-        ))}
-        {templates.length === 0 && (
-          <p className="p-3 text-[12px] text-[#807a73]">No prompts match that search.</p>
-        )}
+              <span className="flex min-w-0 flex-col gap-[3px]">
+                <strong className="text-[12px] font-semibold">{template.name}</strong>
+                <small className="text-[10px] leading-[1.35] text-[#807a73]">
+                  {template.description}
+                </small>
+                <span className="font-mono text-[9px] text-[#aaa39b]">
+                  {template.fields.length} fields <i>·</i> {template.categories[0]}
+                </span>
+              </span>
+              {selectedId === template.id && (
+                <span className="absolute right-[11px] top-[15px] h-1.5 w-1.5 rounded-full bg-[#e86d49]" />
+              )}
+            </button>
+          ))}
+          {templates.length === 0 && (
+            <p className="p-3 text-[12px] text-[#807a73]">No prompts match that search.</p>
+          )}
+        </div>
       </div>
     </aside>
   );
