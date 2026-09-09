@@ -12,6 +12,8 @@ const isPostHogConfigured = Boolean(posthogKey && posthogHost);
 
 const options = {
   api_host: posthogHost,
+  autocapture: true,
+  capture_pageleave: true,
   defaults: "2026-05-30",
   capture_exceptions: {
     capture_unhandled_errors: true,

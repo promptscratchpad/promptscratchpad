@@ -45,7 +45,7 @@ PromptScratchpad supports anonymous PostHog tracking. The app runs without analy
 cp .env.example .env.local
 ```
 
-Analytics uses cookieless tracking, in-memory persistence, no person profiles, no autocapture, and no session recording. Custom events include `prompt_template_selected`, `prompt_reset`, and `prompt_copied`. Each event includes the prompt template ID and never includes the rendered prompt or form values.
+Analytics uses cookieless tracking, in-memory persistence, no person profiles, and no session recording. Custom events include `prompt_template_selected`, `prompt_reset`, and `prompt_copied`. Each event includes the prompt template ID and never includes the rendered prompt or form values.
 
 ## Add a prompt template
 
