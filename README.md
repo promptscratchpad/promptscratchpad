@@ -36,6 +36,7 @@ The routes are:
 
 - `/` for the prompt library.
 - `/about` for project information and package licenses.
+- `/privacy` for the privacy policy.
 
 ### Optional analytics
 
