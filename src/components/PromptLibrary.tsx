@@ -29,11 +29,11 @@ export function PromptLibrary({
         <p className="mb-2.5 font-mono text-[10px] font-medium uppercase tracking-[1.6px] text-[#bd4d2e]">
           Prompt library
         </p>
-        <h1 className="mb-[15px] text-[26px] font-semibold leading-[1.12] tracking-[-1.1px] max-[720px]:[&>br]:hidden">
+        <h2 className="mb-[15px] text-[26px] font-semibold leading-[1.12] tracking-[-1.1px] max-[720px]:[&>br]:hidden">
           Start with a prompt.
           <br />
           <em className="font-serif font-medium italic text-[#e86d49]">Make it yours.</em>
-        </h1>
+        </h2>
         <p className="mb-8 max-w-[220px] text-[12px] leading-[1.55] text-[#807a73] max-[720px]:mb-[23px]">
           Community-built prompt templates for better conversations with AI.
         </p>
@@ -71,6 +71,7 @@ export function PromptLibrary({
           {templates.map((template) => (
             <button
               type="button"
+              id={`template-${template.id}`}
               className={`relative flex w-full items-start gap-[11px] rounded-[7px] border p-[11px_10px] text-left ${selectedId === template.id ? "border-[#e7b4a4] bg-[#fffaf6]" : "border-transparent bg-transparent hover:bg-[#f1ede7]"} max-[720px]:min-w-[220px]`}
               key={template.id}
               onClick={() => chooseTemplate(template)}
