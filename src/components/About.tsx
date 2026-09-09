@@ -14,6 +14,16 @@ const packages = [
     repository: "https://github.com/remix-run/react-router",
   },
   {
+    name: "PostHog React",
+    license: "MIT",
+    repository: "https://github.com/PostHog/posthog-js",
+  },
+  {
+    name: "PostHog JS",
+    license: "Apache-2.0 / MIT",
+    repository: "https://github.com/PostHog/posthog-js",
+  },
+  {
     name: "Lucide React",
     license: "ISC",
     repository: "https://github.com/lucide-icons/lucide",
@@ -27,6 +37,11 @@ const packages = [
     name: "Vite+",
     license: "MIT",
     repository: "https://github.com/voidzero-dev/vite-plus",
+  },
+  {
+    name: "Vitest",
+    license: "MIT",
+    repository: "https://github.com/vitest-dev/vitest",
   },
   {
     name: "TypeScript",
