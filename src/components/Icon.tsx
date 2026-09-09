@@ -1,9 +1,9 @@
 import { DynamicIcon, type IconName } from "lucide-react/dynamic";
 
-export function Icon({ name }: { name: string }) {
+export function Icon({ name }: { name: IconName }) {
   return (
     <DynamicIcon
-      name={name as IconName}
+      name={name}
       aria-hidden="true"
       focusable="false"
       className="h-[15px] w-[15px]"

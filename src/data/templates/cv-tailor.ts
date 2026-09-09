@@ -3,7 +3,7 @@ import type { PromptTemplate } from "../prompts";
 const template: PromptTemplate = {
   id: "cv-tailor",
   name: "Tailor a CV",
-  icon: "file-user-round",
+  icon: "file-user",
   description: "Match your experience to a specific role",
   longDescription:
     "Bring a job description and your existing CV together to find the strongest evidence, missing keywords, and honest improvements.",

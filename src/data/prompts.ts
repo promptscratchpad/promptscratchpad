@@ -1,3 +1,5 @@
+import type { IconName } from "lucide-react/dynamic";
+
 export type PromptField = {
   label: string;
   placeholder: string;
@@ -39,7 +41,7 @@ export type PromptCategory =
 export type PromptTemplate = {
   id: string;
   name: string;
-  icon: string;
+  icon: IconName;
   description: string;
   longDescription: string;
   categories: PromptCategory[];
