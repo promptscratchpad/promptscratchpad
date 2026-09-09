@@ -26,9 +26,10 @@ export function Privacy() {
           <p className="!mb-10 text-[12px] text-[#a8a198]">Last updated: September 9, 2026</p>
 
           <p>
-            PromptScratchpad is Open Source and maintained by Ian Everall. This policy explains what
-            information PromptScratchpad collects, why it collects it, and the choices available to
-            you when you use the website.
+            PromptScratchpad is{" "}
+            <a href="https://github.com/promptscratchpad/promptscratchpad">Open source</a> and
+            maintained by Ian Everall. This policy explains what information PromptScratchpad
+            collects, why it collects it, and the choices available to you when you use the website.
           </p>
 
           <h2>Information you provide</h2>
@@ -59,7 +60,7 @@ export function Privacy() {
           </p>
           <p>
             The current configuration uses in-memory PostHog persistence, disables person profiles,
-            and disables session recording. PostHog processes data according to its own
+            and disables session recording. PostHog processes data according to its own{" "}
             <a href="https://posthog.com/privacy" target="_blank" rel="noreferrer">
               privacy policy
             </a>
