@@ -30,6 +30,7 @@ const template: PromptTemplate = {
       type: "textarea",
       required: true,
       placeholderText: "",
+      help: "When using AI, it is best practice to avoid including sensitive information, personal details, or confidential data in your prompts.",
     },
     {
       label: "Audience",
