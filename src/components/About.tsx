@@ -1,5 +1,7 @@
+import { useEffect } from "react";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
+import { setPageMetadata } from "../seo";
 
 const packages = [
   { name: "React", license: "MIT", repository: "https://github.com/facebook/react" },
@@ -51,6 +53,15 @@ const packages = [
 ];
 
 export function About() {
+  useEffect(() => {
+    setPageMetadata({
+      title: "About PromptScratchpad | Reusable AI prompts",
+      description:
+        "Learn about PromptScratchpad, an open source library of reusable AI prompt templates and the packages that power it.",
+      url: "https://promptscratchpad.com/about",
+    });
+  }, []);
+
   return (
     <div className="flex min-h-screen flex-col bg-[#f6f4f0] font-sans text-[#2c2926]">
       <Header />

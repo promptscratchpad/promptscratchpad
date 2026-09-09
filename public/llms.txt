@@ -1,0 +1,28 @@
+# PromptScratchpad
+
+> PromptScratchpad is an open source library of reusable AI prompt templates. Users fill in a template's fields, preview the rendered prompt, and copy it into ChatGPT, Claude, Gemini, or another AI tool.
+
+PromptScratchpad is useful for turning repeatable prompt workflows into simple forms. It does not generate or send prompts to an AI provider. It formats prompts for the user's tool of choice.
+
+## Prompt library
+
+The prompt library is available at https://promptscratchpad.com/.
+
+Current templates include:
+
+- Blog post generator: turn an idea into a draft.
+- Character creator: build a character with depth.
+- Code snippet generator: get a focused implementation.
+- Meeting notes: turn a transcript into action items.
+- Sanitise & Clarify Content: clean up and clarify existing content.
+
+The library supports search and category filtering. Templates can include required fields, defaults, optional fields, multiple input types, and conditional sections.
+
+## About
+
+Project information and package licences are available at https://promptscratchpad.com/about.
+
+## Source code
+
+Prompt templates are community-contributed TypeScript files in the source repository:
+https://github.com/promptscratchpad/promptscratchpad

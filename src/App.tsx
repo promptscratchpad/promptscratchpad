@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { usePostHog } from "@posthog/react";
 import {
   promptTemplates,
@@ -14,6 +14,7 @@ import { PromptPreview } from "./components/PromptPreview";
 import type { FieldValue, FormValues } from "./components/types";
 import { Icon } from "./components/Icon";
 import { hasValue, renderPrompt } from "./data/render-prompt";
+import { setPageMetadata } from "./seo";
 
 function defaultValue(field: PromptField): FieldValue {
   if (field.type === "toggle") return field.defaultValue ?? false;
@@ -29,6 +30,14 @@ function initialValues(template: PromptTemplate): FormValues {
 
 function App({ isPostHogConfigured }: { isPostHogConfigured: boolean }) {
   const posthog = usePostHog();
+  useEffect(() => {
+    setPageMetadata({
+      title: "PromptScratchpad | Reusable AI prompt templates",
+      description:
+        "Build better AI prompts with reusable templates. Fill in the context, preview the result, and copy it into ChatGPT, Claude, Gemini, or another AI tool.",
+      url: "https://promptscratchpad.com/",
+    });
+  }, []);
   const [selectedId, setSelectedId] = useState(promptTemplates[0].id);
   const [values, setValues] = useState<FormValues>(() => initialValues(promptTemplates[0]));
   const [query, setQuery] = useState("");
